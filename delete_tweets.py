@@ -6,6 +6,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import tweepy
 
+
 class TweetTracker():
 
     def __init__(self, config:str, testing:bool=True, verbose:bool=False):
@@ -168,6 +169,7 @@ def main(config_filepath, save_filepath, days_to_keep, fav_min, rt_min, testing,
     tracker = TweetTracker(config=config_filepath, testing=testing, verbose=verbose)
     tracker.process_timeline(days_to_keep=days_to_keep, fav_min=fav_min, rt_min=rt_min)
     tracker.save_data(filename=save_filepath)
+
 
 if __name__ == '__main__':
     # argparse
