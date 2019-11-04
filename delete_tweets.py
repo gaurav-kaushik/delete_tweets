@@ -93,7 +93,7 @@ class TweetTracker():
         self.deleted_counter += 1
         # this is where a tweet is actually deleted
         if not self.testing:
-            api.destroy_status(status.id)
+            self.api.destroy_status(status.id)
 
     def _save_tweet(self, status):
         """ Save a tweet and count it """
@@ -192,10 +192,12 @@ if __name__ == '__main__':
     rt_min = args.rt_min
     testing = args.testing
     verbose = args.verbose
-    print(testing)
 
     # main
+    if not testing:
+        print("--- DELETING TWEETS ---")
     main(config_filepath, save_filepath, days_to_keep, fav_min, rt_min, testing, verbose)
+    print("--- Process complete ---")
 
     """ 
     Testing Mode:
