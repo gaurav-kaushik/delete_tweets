@@ -19,7 +19,7 @@ Copy + paste your API keys and tokens in the right locations in `template.config
 
 If the code errors because of API issues, make sure you have the correct permissions, regenerate your tokens/credentials, update your config file, and use the right config file in running the code.
 
-### Usage: 
+### Usage
 
 To see what it would look like to delete your tweets, run the code in testing mode (with `-t` flag) and examine the output (default: `deleted_tweets.csv`):
  
