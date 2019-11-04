@@ -26,7 +26,7 @@ class TweetTracker():
         with open(self.config, "rb") as f:
             keys = json.load(f)
 
-        # set auth vars
+        # get auth creds
         CONSUMER_KEY = keys['API Key']
         CONSUMER_SECRET = keys['API Secret Key']
         ACCESS_TOKEN_KEY = keys['Access Token']
@@ -174,7 +174,7 @@ def main(config_filepath, save_filepath, days_to_keep, fav_min, rt_min, testing,
 if __name__ == '__main__':
     # argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--config_filepath", type=str, default='twitter.config', help="Path to config file")
+    parser.add_argument("-c", "--config_filepath", type=str, default='template.config', help="Path to config file")
     parser.add_argument("-s", "--save_filepath", type=str, default='tweets.csv', help="Path to save tweets")
     parser.add_argument("-d", "--days_to_keep", type=int, default=365, help="Number of days to keep tweets [Default: 365]")
     parser.add_argument("-f", "--fav_min", type=int, default=0, help="Minimum faves for a tweet to be saved [Default: don't filter on faves")

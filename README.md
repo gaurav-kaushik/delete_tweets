@@ -6,6 +6,19 @@ This repo has code to use the tweepy package to delete tweets from your timeline
 - or having a certain number of faves/likes
 - or having a certain number of retweets
 
+### Setup
+
+You will need to create a developer account at [developer.twitter.com](https://developer.twitter.com). 
+
+Once you're approved, you can create an app. Make sure your app has Read and write permissions, so you can see tweets and also delete them.
+
+Your app setup should look like this:
+
+
+Copy + paste those credentials in the right location in `template.config`. You can use this file to run the code.
+
+If the code errors because of API issues, make sure you have the correct permissions, regenerate your tokens/credentials, and update your config file.
+
 ### Usage: 
 
 To see what it would look like to delete your tweets, run the code in testing mode (with `-t` flag) and examine the output (default: `deleted_tweets.csv`):
