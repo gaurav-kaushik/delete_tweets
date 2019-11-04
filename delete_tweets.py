@@ -150,16 +150,16 @@ class TweetTracker():
 
         return should_be_deleted
     
-    def save_data(self, filename:str="tweets.csv"):
+    def save_data(self, filename:str="tweets.tsv"):
         # check extension
-        if not filename.endswith(".csv"):
-            filename += ".csv"
+        if not filename.endswith(".tsv"):
+            filename += ".tsv"
 
         # save as dataframe
         df_deleted = pd.DataFrame(data=self.deleted_tweets[1:], columns=self.deleted_tweets[0])
         df_saved = pd.DataFrame(data=self.saved_tweets[1:], columns=self.saved_tweets[0])
-        df_deleted.to_csv(path_or_buf="deleted_"+filename, index=False)
-        df_saved.to_csv(path_or_buf="saved_"+filename, index=False)
+        df_deleted.to_csv(path_or_buf="deleted_"+filename, sep='\t', index=False)
+        df_saved.to_csv(path_or_buf="saved_"+filename, sep='\t', index=False)
 
 
 def main(config_filepath, save_filepath, days_to_keep, fav_min, rt_min, testing, verbose):
@@ -175,7 +175,7 @@ if __name__ == '__main__':
     # argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--config_filepath", type=str, default='template.config', help="Path to config file")
-    parser.add_argument("-s", "--save_filepath", type=str, default='tweets.csv', help="Path to save tweets")
+    parser.add_argument("-s", "--save_filepath", type=str, default='tweets.tsv', help="Path to save tweets")
     parser.add_argument("-d", "--days_to_keep", type=int, default=365, help="Number of days to keep tweets [Default: 365]")
     parser.add_argument("-f", "--fav_min", type=int, default=0, help="Minimum faves for a tweet to be saved [Default: don't filter on faves")
     parser.add_argument("-r", "--rt_min", type=int, default=0, help="Minimum rts for a tweet to be saved [Default: don't filter on rts")
@@ -201,7 +201,7 @@ if __name__ == '__main__':
 
     """ 
     Testing Mode:
-        python delete_tweets.py -c twitter.config -d 365 -f 0 -r 0 -s tweets.csv -t -v
+        python delete_tweets.py -c twitter.config -d 365 -f 0 -r 0 -s tweets.tsv -t -v
 
     You can run this and then examine the csv with 'deleted tweets' to verify if applied properly
     """
